@@ -19,6 +19,7 @@ export const registerUser=(info)=>dispatch=>{
             payload:err.response.data.errors,
         }))
 }
+
 ///////LOAD USER:
 export const loadUser=()=>dispatch=>{
     setTocken()
@@ -51,5 +52,6 @@ export const logoutUser=()=>dispatch=>{
         type:LOGOUT
     })
 }
+
 
 

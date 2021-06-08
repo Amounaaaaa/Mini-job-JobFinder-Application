@@ -11,7 +11,8 @@ const  initialState={
     token:localStorage.getItem('token'),
     user:null,
     isAuth:false,
-    errors:null
+    errors:null,
+    hasRole:null
 }
 
 export const redirectToHome = history => () => {
