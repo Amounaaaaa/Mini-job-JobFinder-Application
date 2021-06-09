@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {Container, Row} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {registerUser, registerEmployer} from "../actions/authActions";
+import FileBase64 from 'react-file-base64';
+
 
 // Sates declarations :
 const Inscription = ({history}) => {
@@ -223,6 +225,15 @@ const Inscription = ({history}) => {
                             </label>
                             <input  name="website" required type="text"
                                     className="form-control" placeholder="Enter website" onChange={handlechangeemp}/><br></br>
+                            <FileBase64 type="file" multiple={false}
+
+                                        // onDone={({base64})=>setInfo({...info,selectedFile:base64})}
+
+                            />
+
+
+
+
                             <button className="custom-btn btn-1">Save now</button>
                             <br></br>
                             <br></br>
