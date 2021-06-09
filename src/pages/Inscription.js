@@ -5,6 +5,7 @@ import {registerUser, registerEmployer} from "../actions/authActions";
 import FileBase64 from 'react-file-base64';
 import DatePicker from 'react-date-picker';
 import moment from 'moment';
+import {FormGroup,FormLabel} from 'react-bootstrap'
 
 
 
@@ -58,18 +59,24 @@ const Inscription = ({history}) => {
     const [value, setValue] = useState(new Date());
     //const date=value
     // var dateString = '07-15-2016';
-    var momentObj = moment(value, 'MM-DD-YYYY');
-    var momentString = momentObj.format('YYYY-MM-DD').split("T00"); // 2016-07-15
     // //var dateString = 'Thu Jul 15 2016 19:31:44 GMT+0200 (CEST)';
     // var dateObj = new Date(value);
     // var momentObj = moment(dateObj);
     // var momentString = momentObj.format('YYYY-MM-DD'); // 2016-07-15
 
+    /*
+Get date from datePicker start
+*/
+    var momentObj = moment(value, 'MM-DD-YYYY');
+    var momentString = momentObj.format('YYYY-MM-DD').split("T00"); // 2016-07-15
     console.log("date",momentString)
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerUser(info))
     }
+    /*
+Get date from datePicker end
+*/
     //handlechangeemp
     const handlechangeemp = (e) => {
         setInfoemp({...infoemp, [e.target.name]: e.target.value})
@@ -138,12 +145,23 @@ const Inscription = ({history}) => {
                             <br></br>
                             Enter your information here (Candidat Space) &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span
                             style={{color: 'red'}}> (*) </span> <b>Required</b> <br></br><br></br><br></br>
-                            <DatePicker
-                                onChange={setValue}
-                                // name="date"
-                            />
+
+                            {/*DatePicker Block Start---------------------------------------------------*/}
+                            {/*<FormGroup>*/}
+                            {/*    <FormLabel>Label</FormLabel>*/}
+                            {/*    <DatePicker id="example-datepicker" value={value}  onChange={setValue} />*/}
+                            {/*</FormGroup>*/}
+
+                            <label className="w3-text-blue">  Enter your birthday <span
+                                style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label><br></br>
+                            <DatePicker  onChange={setValue}   />
+
+                            {/*DatePicker Block End -------------------------------------------------*/}
+
+                            <br></br>
+                            <br></br>
                             <label className="w3-text-blue">First Name <span
-                                style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label>
+                                style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp;&nbsp;  </label>
                             <input onFocus={() => setErrors(null)} value={info.firstname} required name="firstname" required type="text"
                                    className="form-control "
                                    id="exampleinput  onFocus={()=>setErrors(null)} Email1" aria-describedby="emailHelp"

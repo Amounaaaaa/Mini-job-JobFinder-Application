@@ -1,11 +1,11 @@
 import React from 'react'
 
-const FindAJob = () => {
+const Rankings = () => {
     return (
         <div>
-            Find a job page
+           Company rank
         </div>
     )
 }
 
-export default FindAJob
+export default Rankings

@@ -9,14 +9,15 @@ import {BrowserRouter,Switch,Route} from "react-router-dom";
 import Header from "./components/componentsTemplates/Header";
 import store from "./store/store";
 import {Provider} from "react-redux";
-import UploadCv from "./pages/UploadCv";
+import UploadCv from "./pages/CreateCV";
 import PrivateRoute from "./components/PrivateRoute";
 import TestimonialShareExperince from "./components/componentsTemplates/TestimonialShareExperince";
 import Contact from './components/componentsTemplates/Contact';
-import FindAJob from './components/componentsTemplates/FindAJob';
+import Rankings from './pages/Rankings';
 import Profile from "./pages/Profile";
 import Inscription from "./pages/Inscription";
 import Daterr from "./pages/Daterr";
+import CreateCV from "./pages/CreateCV";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -29,12 +30,14 @@ ReactDOM.render(
                    <Route exact path="/shareexperience" component={TestimonialShareExperince} />
                    <Route exact path="/" component={App} />
                    <Route exact path="/contact" component={Contact} />
-                   <Route exact path="/finajob" component={FindAJob} />
+                   <Route exact path="/ranking" component={Rankings} />
                    <Route exact path="/register" component={Register} />
                    <Route exact path="/inscription" component={Inscription} />
                    <Route exact path="/login" component={Login} />
                    <Route exact path="/profile" component={Profile} />
-                   <Route exact path="/date" component={Daterr} />
+                   {/*<Route exact path="/date" component={Daterr} />*/}
+                   <Route exact path="/cv" component={CreateCV} />
+
                </Switch>
            </BrowserRouter>
        </Provider>

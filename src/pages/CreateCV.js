@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UploadCv = () => {
+const CreateCV = () => {
     return (
         <div>
             welcome to create your own cv
@@ -8,4 +8,4 @@ const UploadCv = () => {
     )
 }
 
-export default UploadCv
+export default CreateCV
