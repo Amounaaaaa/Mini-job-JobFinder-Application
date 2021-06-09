@@ -66,14 +66,6 @@ export const loadEmployer=()=>dispatch=>{
 
 
 
-
-
-
-
-
-
-
-
 export const loginUser=data=>dispatch=>{
     console.log("data====>",data)
     axios.post('/login',data)

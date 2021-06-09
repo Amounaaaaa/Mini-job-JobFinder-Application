@@ -16,6 +16,7 @@ import Contact from './components/componentsTemplates/Contact';
 import FindAJob from './components/componentsTemplates/FindAJob';
 import Profile from "./pages/Profile";
 import Inscription from "./pages/Inscription";
+import Daterr from "./pages/Daterr";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -33,8 +34,7 @@ ReactDOM.render(
                    <Route exact path="/inscription" component={Inscription} />
                    <Route exact path="/login" component={Login} />
                    <Route exact path="/profile" component={Profile} />
-
-
+                   <Route exact path="/date" component={Daterr} />
                </Switch>
            </BrowserRouter>
        </Provider>
