@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {registerUser, registerEmployer} from "../actions/authActions";
 import FileBase64 from 'react-file-base64';
 import DatePicker from 'react-date-picker';
-import Moment from 'moment';
+import moment from 'moment';
 
 
 
@@ -15,7 +15,6 @@ const Inscription = ({history}) => {
     const [employer, setEmployer ] = useState(false)
     const [candidat, setCandidat] = useState(false)
     const [selectedd,setSelectedd]=useState(true)
-
     const [info, setInfo] = useState({
         firstname: "",
         lastname: "",
@@ -55,30 +54,21 @@ const Inscription = ({history}) => {
     const registerEmp = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerEmployer(infoemp))
-        // setInfo({
-        //     firstname: "",
-        //     lastname: "",
-        //     phone: "",
-        //     email: "",
-        //     password: "",
-        //     companyname:"",
-        //     website:"",
-        // })
     }
     const [value, setValue] = useState(new Date());
-    const date=value.toDateString().slice(0,15)
+    //const date=value
+    // var dateString = '07-15-2016';
+    var momentObj = moment(value, 'MM-DD-YYYY');
+    var momentString = momentObj.format('YYYY-MM-DD').split("T00"); // 2016-07-15
+    // //var dateString = 'Thu Jul 15 2016 19:31:44 GMT+0200 (CEST)';
+    // var dateObj = new Date(value);
+    // var momentObj = moment(dateObj);
+    // var momentString = momentObj.format('YYYY-MM-DD'); // 2016-07-15
 
-    console.log("date",date)
+    console.log("date",momentString)
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerUser(info))
-        // setInfo({
-        //     firstname: "",
-        //     lastname: "",
-        //     phone: "",
-        //     email: "",
-        //     password: "",
-        // })
     }
     //handlechangeemp
     const handlechangeemp = (e) => {
@@ -91,7 +81,7 @@ const Inscription = ({history}) => {
     console.log(+e.target.value)
         }
     else
-        setInfo({...info, [e.target.name]: e.target.value,datebirth:date})
+        setInfo({...info, [e.target.name]: e.target.value,datebirth:momentString})
     }
     const handlechangeSelect =(e)=>{
       //  console.log(e.target.value)

@@ -28,7 +28,8 @@ const Profile = () => {
                                     <div className="profil-img"></div>
                                     <div className="profil-info">
                                         <h2 className="name">{auth.user.firstname}</h2>
-                                        <h3 className="city">New York, NY</h3>
+                                        <h3 className="city">Date birth : {((auth.user.datebirth))}
+                                        </h3>
                                         <div className="numbers">
                                             <div className="post">
                                                 <p>Post</p>
