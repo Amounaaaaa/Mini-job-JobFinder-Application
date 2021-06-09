@@ -1,4 +1,5 @@
 import {
+    LOAD_EMPLOYER_SUCCESS,
     LOAD_USER_FAIl,
     LOAD_USER_SUCCESS,
     LOGIN_FAIl,
@@ -12,6 +13,7 @@ const  initialState={
     user:null,
     isAuth:false,
     errors:null,
+    connectedAs:''
     // hasRole:null
 }
 
@@ -21,23 +23,32 @@ export const redirectToHome = history => () => {
  export const authReducer = (state=initialState,action)=>{
     switch (action.type){
 
+        case LOAD_EMPLOYER_SUCCESS:
         case LOAD_USER_SUCCESS:
             return{
                 ...state,
                 user:action.payload,
                 errors: null
             }
-
-
         case LOGIN_SUCCESS:
         case REGISTER_Emp_SUCCESS:
+            localStorage.setItem('token',action.payload.token)
+            return{
+                ...state,
+                token:action.payload.token,
+                isAuth:true,
+                errors: null,
+                connectedAs: "Employer"
+            }
         case REGISTER_SUCCESS :
             localStorage.setItem('token',action.payload.token)
             return{
                 ...state,
                 token:action.payload.token,
                 isAuth:true,
-                errors: null
+                errors: null,
+                connectedAs: "Candidat"
+
             }
                 // localStorage.removeItem('token')
                 // return{

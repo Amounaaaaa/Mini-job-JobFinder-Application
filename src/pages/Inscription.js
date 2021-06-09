@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Container, Row} from "reactstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {registerUser} from "../actions/authActions";
+import {registerUser, registerEmployer} from "../actions/authActions";
 
 // Sates declarations :
 const Inscription = ({history}) => {
@@ -16,6 +16,16 @@ const Inscription = ({history}) => {
         phone: "",
         email: "",
         password: "",
+    })
+    const [infoemp, setInfoemp] = useState({
+        firstname: "",
+        lastname: "",
+        phone: "",
+        email: "",
+        password: "",
+        companyname:"",
+        website:"",
+        selectedFile:''
     })
     const [errors, setErrors] = useState(null)
     const auth = useSelector(state => state.auth)
@@ -33,6 +43,20 @@ const Inscription = ({history}) => {
     }, [auth.isAuth, auth.errors])
     // const errors=useSelector(state=>state.auth.errors)
     const dispatch = useDispatch()
+    /////// Employer Form Action dispatch
+    const registerEmp = (e) => {
+        e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
+        dispatch(registerEmployer(infoemp))
+        // setInfo({
+        //     firstname: "",
+        //     lastname: "",
+        //     phone: "",
+        //     email: "",
+        //     password: "",
+        //     companyname:"",
+        //     website:"",
+        // })
+    }
     const registerNow = (e) => {
         e.preventDefault() //utiliser avec le form et pour eviter le chargement de page
         dispatch(registerUser(info))
@@ -43,6 +67,11 @@ const Inscription = ({history}) => {
             email: "",
             password: "",
         })
+    }
+    //handlechangeemp
+    const handlechangeemp = (e) => {
+        setInfoemp({...infoemp, [e.target.name]: e.target.value})
+
     }
     const handlechange = (e) => {
         setInfo({...info, [e.target.name]: e.target.value})
@@ -142,13 +171,16 @@ const Inscription = ({history}) => {
                     </Row>}
                     {/*Candidat  form End */}
                 {/*//////////////////////////////////////// Employer Form //////////////////////////////////////////////////////////////////////////*/}
+
+
+
                     {/*Employer form Start */}
                     { employer && <Row>
                         <div className="w3-container">   {/* w3-blue*/}
                             <h2>
                             </h2>
                         </div>
-                        <form onSubmit={registerNow} className="w3-container w3-card-4">
+                        <form onSubmit={registerEmp} className="w3-container w3-card-4">
                             <br></br><br></br>
                             {/*{errors? errors.map(el=><Alert variant="danger"> {el.msg}</Alert> ) : null}*/}
                             {errors && errors.map(el => <span style={{color: 'red'}}> {el.msg}</span>)}
@@ -158,44 +190,46 @@ const Inscription = ({history}) => {
                             style={{color: 'red'}}> (*) </span> <b>Required</b> <br></br><br></br><br></br>
                             <label className="w3-text-blue">First Name <span
                                 style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label>
-                            <input onFocus={() => setErrors(null)} required name="firstname" required type="text"
-                                   className="form-control "
-                                   id="exampleinput  onFocus={()=>setErrors(null)} Email1" aria-describedby="emailHelp"
-                                   placeholder="Enter First name"
-                                   onChange={handlechange}/><br></br>
+                            <input  required name="firstname" required type="text" className="form-control "  aria-describedby="emailHelp"
+                                   placeholder="Enter First name" onChange={handlechangeemp}/><br></br>
                             <div className="valid-feedback">Valid.</div>
                             <div className="invalid-feedback">Please fill out this field.</div>
+
                             <label className="w3-text-blue">Last Name <span
                                 style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
-                            <input onFocus={() => setErrors(null)} name="lastname" required type="text"
-                                   className="form-control" id="exampleinput  onFocus={()=>setErrors(null)} Email"
-                                   placeholder="Enter Last name" onChange={handlechange}/> <br></br>
+                            <input  name="lastname" required type="text"
+                                   className="form-control"  placeholder="Enter Last name" onChange={handlechangeemp}/> <br></br>
                             <label className="w3-text-blue">Email <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                             </label>
-                            <input onFocus={() => setErrors(null)} name="email" required type="email"
-                                   className="form-control" id="myH1"
-                                   placeholder="Enter your email" onChange={handlechange}/><br></br>
+                            <input  name="email" required type="email"
+                                   className="form-control"
+                                   placeholder="Enter your email" onChange={handlechangeemp}/><br></br>
                             <label className="w3-text-blue">Password <span
                                 style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
-                            <input onFocus={() => setErrors(null)} name="password" required type="password"
+                            <input  name="password" required type="password"
                                    className="form-control"
-                                   id="exampleinput  onFocus={()=>setErrors(null)} Email1" placeholder="Enter password"
-                                   onChange={handlechange}/><br></br>
+                                   placeholder="Enter password"
+                                   onChange={handlechangeemp}/><br></br>
+
                             <label className="w3-text-blue">Phone <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
                             </label>
-                            <input onFocus={() => setErrors(null)} name="phone" required type="text"
-                                   className="form-control" id="exampleinput  onFocus={()=>setErrors(null)} Email1"
-                                   placeholder="Enter your phone number" onChange={handlechange}/><br></br>
+                            <input  name="phone" required type="text"
+                                   className="form-control" placeholder="Enter your phone number" onChange={handlechangeemp}/><br></br>
+                            <label className="w3-text-blue">Company Name <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
+                            </label>
+                            <input  name="companyname" required type="text"
+                                    className="form-control"  placeholder="Enter company name" onChange={handlechangeemp}/><br></br>
+                            <label className="w3-text-blue">website <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
+                            </label>
+                            <input  name="website" required type="text"
+                                    className="form-control" placeholder="Enter website" onChange={handlechangeemp}/><br></br>
                             <button className="custom-btn btn-1">Save now</button>
                             <br></br>
                             <br></br>
                             <br></br>
                         </form>
-
-
                     </Row>}
                     {/*Employer form End */}
-
                 </Container>
 
         </div>

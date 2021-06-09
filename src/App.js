@@ -9,18 +9,28 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Feed from "./pages/Feed"
 import Header from "./components/componentsTemplates/Header";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {loadUser} from "./actions/authActions";
+import {loadEmployer, loadUser} from "./actions/authActions";
 
 
 
 
 function App() {
+    const auth = useSelector(state => state.auth)
 
     const dispatch=useDispatch()
     useEffect(()=>{
-        dispatch(loadUser())
+
+        if ( auth.connectedAs==="Candidat") {
+            dispatch(loadUser()
+
+            )
+
+        }else {
+            dispatch(loadEmployer())
+        }
+
     },[]);
     return (
       <>

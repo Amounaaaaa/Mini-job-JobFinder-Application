@@ -1,7 +1,7 @@
 import {
     REGISTER_SUCCESS, REGISTER_FAIl, LOGIN_SUCCESS, LOGIN_FAIl,
     LOAD_USER_SUCCESS,
-    LOAD_USER_FAIl, LOGOUT, REGISTER_Emp_SUCCESS, REGISTER_Emp_FAIl
+    LOAD_USER_FAIl, LOGOUT, REGISTER_Emp_SUCCESS, REGISTER_Emp_FAIl, LOAD_EMPLOYER_SUCCESS, LOAD_EMPLOYER_FAIL
 } from './types'
 import axios from "axios";
 import setTocken from "../setTocken";
@@ -19,8 +19,8 @@ export const registerUser=(info)=>dispatch=>{
             payload:err.response.data.errors,
         }))
 }
-export const registerEmp=(info)=>dispatch=>{
-    axios.post('/registeremployer',info)
+export const registerEmployer=(infoemp)=>dispatch=>{
+    axios.post('/registeremployer',infoemp)
         .then(res=>dispatch({
             type:REGISTER_Emp_SUCCESS,
             payload:res.data
@@ -49,6 +49,31 @@ export const loadUser=()=>dispatch=>{
             payload:err.response.data.errors
         }))
 }
+//Load employer:
+export const loadEmployer=()=>dispatch=>{
+    setTocken()
+    axios.get('/loginemp')
+        .then(res=>dispatch({
+            type:LOAD_EMPLOYER_SUCCESS,
+            payload:res.data
+        }))
+        .catch(err=>dispatch({
+            type:LOAD_EMPLOYER_FAIL,
+            payload:err.response.data.errors
+        }))
+}
+
+
+
+
+
+
+
+
+
+
+
+
 export const loginUser=data=>dispatch=>{
     console.log("data====>",data)
     axios.post('/login',data)
