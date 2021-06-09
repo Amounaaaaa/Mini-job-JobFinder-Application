@@ -5,6 +5,11 @@ import {registerUser} from "../actions/authActions";
 
 // Sates declarations :
 const Inscription = ({history}) => {
+
+    const [employer, setEmployer    ] = useState(false)
+    const [candidat, setCandidat] = useState(false)
+    const [selectedd,setSelectedd]=useState(true)
+
     const [info, setInfo] = useState({
         firstname: "",
         lastname: "",
@@ -43,32 +48,51 @@ const Inscription = ({history}) => {
         setInfo({...info, [e.target.name]: e.target.value})
     }
     const handlechangeSelect =(e)=>{
-        console.log(e.target.value)
+      //  console.log(e.target.value)
+        let role= e.target.value
+        console.log("user role is ",role)
+        if (role==="Employer")
+        {
+            // console.log("vous ete demande l'inscrit comme Employer !")
+            setEmployer(true)
+            setCandidat(false)
+            setSelectedd(false)
+        }
+        else {
+            setCandidat(true)
+            setEmployer(false)
+            setSelectedd(false)
+
+            // console.log("vous ete demande l'inscrit comme Candidat !")
+
+        }
     }
     return (
         <div>
             <Container>
                 <Row>
-                    <form style={{width:"672px",display: 'block',
-                        margin:'0 auto'
+                    {selectedd && <form style={{
+                        width: "672px", display: 'block',
+                        margin: '0 auto'
                     }} className="form-signin">
                         <h2 className="form-signin-heading">Inscription</h2>
                         <div className="form-group">
                             <h5 style={{color: "#0f6674"}}>Inscription Tant que</h5>
-                            <select   onChange={handlechangeSelect} className="form-select form-select-lg mb-3"
-                                      aria-label=".form-select-lg example">
-                                <option  value="Employer" selected>Employer</option>
-                                <option  value="Entreprise">Entreprise</option>
+                            <select onChange={handlechangeSelect} className="form-select form-select-lg mb-3"
+                                    aria-label=".form-select-lg example">
+                                <option selected>Choose the type of account</option>
+                                <option value="Employer">Employer</option>
+                                <option value="Candidat">Canditat</option>
                             </select>
                         </div>
-                    </form>
+                    </form>}
                 </Row>
             </Container>
                 <Container style={{width: '800px', marginTop: '100px', background: '#e8e8e4'}}>
-                    <Row>
+                    {/*Candidat  form Start */}
+                    { candidat && <Row>
                         <div className="w3-container">   {/* w3-blue*/}
-                            <h2>
-                            </h2>
+                            <h2> </h2>
                         </div>
                         <form onSubmit={registerNow} className="w3-container w3-card-4">
                             <br></br><br></br>
@@ -76,7 +100,7 @@ const Inscription = ({history}) => {
                             {errors && errors.map(el => <span style={{color: 'red'}}> {el.msg}</span>)}
                             <br></br>
                             <br></br>
-                            Enter your information here &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span
+                            Enter your information here (Candidat Space) &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span
                             style={{color: 'red'}}> (*) </span> <b>Required</b> <br></br><br></br><br></br>
                             <label className="w3-text-blue">First Name <span
                                 style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label>
@@ -113,7 +137,65 @@ const Inscription = ({history}) => {
                             <br></br>
                             <br></br>
                         </form>
-                    </Row>
+
+
+                    </Row>}
+                    {/*Candidat  form End */}
+                {/*//////////////////////////////////////// Employer Form //////////////////////////////////////////////////////////////////////////*/}
+                    {/*Employer form Start */}
+                    { employer && <Row>
+                        <div className="w3-container">   {/* w3-blue*/}
+                            <h2>
+                            </h2>
+                        </div>
+                        <form onSubmit={registerNow} className="w3-container w3-card-4">
+                            <br></br><br></br>
+                            {/*{errors? errors.map(el=><Alert variant="danger"> {el.msg}</Alert> ) : null}*/}
+                            {errors && errors.map(el => <span style={{color: 'red'}}> {el.msg}</span>)}
+                            <br></br>
+                            <br></br>
+                            Enter your information here (Employer space ) &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <span
+                            style={{color: 'red'}}> (*) </span> <b>Required</b> <br></br><br></br><br></br>
+                            <label className="w3-text-blue">First Name <span
+                                style={{color: 'red'}}> * &nbsp; &nbsp;</span> &nbsp; &nbsp;  </label>
+                            <input onFocus={() => setErrors(null)} required name="firstname" required type="text"
+                                   className="form-control "
+                                   id="exampleinput  onFocus={()=>setErrors(null)} Email1" aria-describedby="emailHelp"
+                                   placeholder="Enter First name"
+                                   onChange={handlechange}/><br></br>
+                            <div className="valid-feedback">Valid.</div>
+                            <div className="invalid-feedback">Please fill out this field.</div>
+                            <label className="w3-text-blue">Last Name <span
+                                style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
+                            <input onFocus={() => setErrors(null)} name="lastname" required type="text"
+                                   className="form-control" id="exampleinput  onFocus={()=>setErrors(null)} Email"
+                                   placeholder="Enter Last name" onChange={handlechange}/> <br></br>
+                            <label className="w3-text-blue">Email <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
+                            </label>
+                            <input onFocus={() => setErrors(null)} name="email" required type="email"
+                                   className="form-control" id="myH1"
+                                   placeholder="Enter your email" onChange={handlechange}/><br></br>
+                            <label className="w3-text-blue">Password <span
+                                style={{color: 'red'}}>*</span>  &nbsp; &nbsp;  </label>
+                            <input onFocus={() => setErrors(null)} name="password" required type="password"
+                                   className="form-control"
+                                   id="exampleinput  onFocus={()=>setErrors(null)} Email1" placeholder="Enter password"
+                                   onChange={handlechange}/><br></br>
+                            <label className="w3-text-blue">Phone <span style={{color: 'red'}}>*</span>  &nbsp; &nbsp;
+                            </label>
+                            <input onFocus={() => setErrors(null)} name="phone" required type="text"
+                                   className="form-control" id="exampleinput  onFocus={()=>setErrors(null)} Email1"
+                                   placeholder="Enter your phone number" onChange={handlechange}/><br></br>
+                            <button className="custom-btn btn-1">Save now</button>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </form>
+
+
+                    </Row>}
+                    {/*Employer form End */}
+
                 </Container>
 
         </div>

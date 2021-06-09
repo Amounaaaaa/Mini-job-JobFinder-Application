@@ -2,7 +2,7 @@ import {
     LOAD_USER_FAIl,
     LOAD_USER_SUCCESS,
     LOGIN_FAIl,
-    LOGIN_SUCCESS, LOGOUT,
+    LOGIN_SUCCESS, LOGOUT, REGISTER_Emp_SUCCESS,
     REGISTER_FAIl,
     REGISTER_SUCCESS
 } from "../actions/types";
@@ -12,7 +12,7 @@ const  initialState={
     user:null,
     isAuth:false,
     errors:null,
-    hasRole:null
+    // hasRole:null
 }
 
 export const redirectToHome = history => () => {
@@ -27,7 +27,10 @@ export const redirectToHome = history => () => {
                 user:action.payload,
                 errors: null
             }
+
+
         case LOGIN_SUCCESS:
+        case REGISTER_Emp_SUCCESS:
         case REGISTER_SUCCESS :
             localStorage.setItem('token',action.payload.token)
             return{

@@ -18,7 +18,6 @@ const Profile = () => {
             <Row>
                 <div>
                     <div>
-
                         <div className="main-container">
                             {/*HEADER */}
                             <header className="block">

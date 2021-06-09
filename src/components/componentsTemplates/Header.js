@@ -56,14 +56,14 @@ const Header = () => {
                                                         <Link style={{textDecoration: 'none'}}   to="/finajob"> <li><a>Find a job</a></li></Link>
                                                         <li>    <Link  style={{textDecoration: 'none'}}  to="/finajob"> <li> <a href="#">Page</a>  </li></Link>
                                                             <ul className="submenu">
-                                                                {/*<li><a href="blog.html">Blog</a></li>*/}
-                                                                {/*<li><a href="single-blog.html">Blog Details</a></li>*/}
-                                                                {/*<li><a href="elements.html">Elements</a></li>*/}
-                                                                {/*<li><a href="job_details.html">job Details</a></li>*/}
+                                                                <li><a href="blog.html">Blog</a></li>
+                                                                <li><a href="single-blog.html">Blog Details</a></li>
+                                                                <li><a href="elements.html">Elements</a></li>
+                                                                <li><a href="job_details.html">job Details</a></li>
                                                             </ul>
                                                         </li>
                                                         <Link  style={{textDecoration: 'none'}}  to="/contact"> <li><a href="contact.html">Contact</a></li></Link>
-                                                        {/*<li><a href="contact.html">Contact</a></li>*/}
+                                                        <li><a href="contact.html">Contact</a></li>
                                                     </ul>
                                                 </nav>
                                             </div>
@@ -86,12 +86,8 @@ const Header = () => {
 
                                                     </>
                                                 )
-
                                                 }
                                                 {/*<Link to="/profile"><a href="#" className="btn head-btn1">Profile</a></Link>*/}
-
-
-
                                                 {/*<a href="#" onClick={handleShow} className="btn head-btn2">Login</a>*/}
                                                 {/*<Link to="/register">Register</Link>*/}
                                                 {/*<Link  style={{textDecoration: 'none'}}  to="/register">*/}
