@@ -21,10 +21,10 @@ const Profile = () => {
                         <div className="container1">
                             <div className="all flex-row">
                                 <div className="menu flex-column">
-                                    <div className="flex-row label-wrapper">
-                                        <img src="https://i.ibb.co/crgCrWT/instagram.png"/>
-                                        <h3 className="insta-writing">Instagram</h3>
-                                    </div>
+                                    {/*<div className="flex-row label-wrapper">*/}
+                                    {/*    <img src="https://i.ibb.co/crgCrWT/instagram.png"/>*/}
+                                    {/*    <h3 className="insta-writing">Instagram</h3>*/}
+                                    {/*</div>*/}
                                     <div className="profil-img"></div>
                                     <div className="profil-info">
                                         <h2 className="name">{auth.user.firstname}</h2>
@@ -128,7 +128,7 @@ const Profile = () => {
                                         <div className="right-middle">
                                             <div className="featured">
                                                 <div className="featured-header">
-                                                    <h2 className="featured-stories"> Featured Stories</h2>
+                                                    <h2 className="featured-stories"> Academic training</h2>
                                                     <button className="button popular-stor"> Popular Stories</button>
                                                 </div>
                                                 <div className="featured-body">

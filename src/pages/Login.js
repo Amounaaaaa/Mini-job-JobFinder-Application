@@ -58,7 +58,7 @@ const Login = ({history}) => {
                             <label>Password <span style={{color:'red'}}>*</span> </label>
                             <input  onFocus={()=>setErrors(null)}  name="password" required type="password" className="form-control" id="exampleInputEmail1"     onChange={handlechange}/><br></br>
                              <button type="submit" className="custom-btn btn-1">Save now</button> <br></br> <br></br> <br></br>
-                            Voulez-vous vous inscrire à job finder ?
+                            Not a member?
                             <Link style={{textDecoration: 'none'}}to="/register">
                                 <button className="custom-btn btn-4">
                                     &nbsp;&nbsp;Register now</button></Link>

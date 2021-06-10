@@ -1,7 +1,16 @@
 import {
-    REGISTER_SUCCESS, REGISTER_FAIl, LOGIN_SUCCESS, LOGIN_FAIl,
+    REGISTER_SUCCESS,
+    REGISTER_FAIl,
+    LOGIN_SUCCESS,
+    LOGIN_FAIl,
     LOAD_USER_SUCCESS,
-    LOAD_USER_FAIl, LOGOUT, REGISTER_Emp_SUCCESS, REGISTER_Emp_FAIl, LOAD_EMPLOYER_SUCCESS, LOAD_EMPLOYER_FAIL
+    LOAD_USER_FAIl,
+    LOGOUT,
+    REGISTER_Emp_SUCCESS,
+    REGISTER_Emp_FAIl,
+    LOAD_EMPLOYER_SUCCESS,
+    LOAD_EMPLOYER_FAIL,
+    GET_CATEGORIE_SUCCESS, GET_CATEGORIE_FAIL, GET_CATEGORIE_LOADING
 } from './types'
 import axios from "axios";
 import setTocken from "../setTocken";
@@ -30,12 +39,23 @@ export const registerEmployer=(infoemp)=>dispatch=>{
             payload:err.response.data.errors,
         }))
 }
+export const getcategories=()=>dispatch=>{
+
+    dispatch({
+        type:GET_CATEGORIE_LOADING
+    })
+    axios.get('/categorie')
+        .then(res=>dispatch({
+            type:GET_CATEGORIE_SUCCESS,
+            payload:res.data
+            }))
+            .catch(err=>dispatch({
+                type:GET_CATEGORIE_FAIL,
+                payload:err.response.data.errors
+            }))
 
 
-
-
-
-
+}
 ///////LOAD USER:
 export const loadUser=()=>dispatch=>{
     setTocken()

@@ -1,4 +1,6 @@
 import {
+    GET_CATEGORIE_FAIL, GET_CATEGORIE_LOADING,
+    GET_CATEGORIE_SUCCESS,
     LOAD_EMPLOYER_SUCCESS,
     LOAD_USER_FAIl,
     LOAD_USER_SUCCESS,
@@ -11,9 +13,11 @@ import {
 const  initialState={
     token:localStorage.getItem('token'),
     user:null,
+    categories:null,
     isAuth:false,
     errors:null,
-    connectedAs:''
+    connectedAs:'',
+    isLoading:false
     // hasRole:null
 }
 
@@ -76,6 +80,22 @@ export const redirectToHome = history => () => {
                    errors:null,
                    user:null
                   }
+                  // /* ----------------Categorie*--------------------------/
+        case GET_CATEGORIE_SUCCESS:
+            return{
+                categories: action.payload,
+                isLoading: false
+            }
+        case GET_CATEGORIE_FAIL:
+            return{
+                errors: action.payload
+            }
+            case GET_CATEGORIE_LOADING:
+                return {
+                    ...state.categories,
+                    isLoading:true
+                }
+
 
         default:
             return state

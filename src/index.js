@@ -33,10 +33,11 @@ ReactDOM.render(
                    <Route exact path="/ranking" component={Rankings} />
                    <Route exact path="/register" component={Register} />
                    <Route exact path="/inscription" component={Inscription} />
-                   <Route exact path="/login" component={Login} />
+                   <Route exact path="/login"  component={Login} />
                    <Route exact path="/profile" component={Profile} />
-                   {/*<Route exact path="/date" component={Daterr} />*/}
-                   <Route exact path="/cv" component={CreateCV} />
+                   <Route exact path="/date" component={Daterr} />
+                   <PrivateRoute  exact path="/cv" component={CreateCV} />
+                   {/*<Route path="/categorie/:id" render={(props)=><Description{...props} movie={movies} />}></Route>*/}
 
                </Switch>
            </BrowserRouter>
