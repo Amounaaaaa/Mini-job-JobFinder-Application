@@ -72,6 +72,7 @@ const Header = () => {
                                                                 <Link to="/inscription"><a href="#"
                                                                                            className="btn head-btn1">Register</a></Link>
 
+
                                                                 <Link to="/login"><a href="#"
                                                                                      className="btn head-btn1">Login</a></Link>
                                                                 {/*<Link to="/profile">*/}

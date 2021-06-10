@@ -18,6 +18,7 @@ import Profile from "./pages/Profile";
 import Inscription from "./pages/Inscription";
 import Daterr from "./pages/Daterr";
 import CreateCV from "./pages/CreateCV";
+import OffreByCat from "./pages/OffreByCat";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -27,7 +28,7 @@ ReactDOM.render(
                <Switch>
                    <PrivateRoute exact path="/uploadCv" component={UploadCv} />
                    <PrivateRoute exact path="/profile" component={Profile} />
-                   <Route exact path="/shareexperience" component={TestimonialShareExperince} />
+                   {/*<Route exact path="/shareexperience" component={TestimonialShareExperince} />*/}
                    <Route exact path="/" component={App} />
                    <Route exact path="/contact" component={Contact} />
                    <Route exact path="/ranking" component={Rankings} />
@@ -37,7 +38,9 @@ ReactDOM.render(
                    <Route exact path="/profile" component={Profile} />
                    <Route exact path="/date" component={Daterr} />
                    <PrivateRoute  exact path="/cv" component={CreateCV} />
-                   {/*<Route path="/categorie/:id" render={(props)=><Description{...props} movie={movies} />}></Route>*/}
+                   <Route path="/categorie/:id" render={(props)=> <OffreByCat{...props}  />}></Route>
+
+
 
                </Switch>
            </BrowserRouter>

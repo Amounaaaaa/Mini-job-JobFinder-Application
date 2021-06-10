@@ -44,6 +44,8 @@ export const getcategories=()=>dispatch=>{
     dispatch({
         type:GET_CATEGORIE_LOADING
     })
+
+
     axios.get('/categorie')
         .then(res=>dispatch({
             type:GET_CATEGORIE_SUCCESS,
@@ -82,9 +84,6 @@ export const loadEmployer=()=>dispatch=>{
             payload:err.response.data.errors
         }))
 }
-
-
-
 
 export const loginUser=data=>dispatch=>{
     console.log("data====>",data)
